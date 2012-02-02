@@ -11,7 +11,7 @@ class Supernote.Views.Notes.IndexView extends Backbone.View
 
   addOne: (note) =>
     view = new Supernote.Views.Notes.NoteView({model : note})
-    @$("ul").append(view.render().el)
+    @$("li").append(view.render().el)
 
   render: =>
     $(@el).html(@template(notes: @options.notes.toJSON() ))

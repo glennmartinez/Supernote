@@ -1,17 +1,17 @@
 <p>
-  <b>Title:</b>
-  <%= title %>
+  
+  <h2><%= title %></h2>
 </p>
 
 <p>
-  <b>Content:</b>
+  
   <%= content %>
 </p>
 
 <p>
-  <b>Tag:</b>
+
   <%= tag %>
 </p>
-<li><a href="#/<%= id %>/edit">Edit</li>
+<a class="btn btn-primary btn-small" href="#/<%= id %>/edit">Edit</a>
 
-<a href="#/index">Back</a>
+<a class="btn btn-danger btn-small" href="#/<%= id %>/destroy" class="destroy">Destroy</a>

@@ -1,4 +1,4 @@
-<h1>Edit note</h1>
+<h3>Edit note</h3>
 
 <form id="edit-note" name="note">
   <div class="field">
@@ -8,7 +8,9 @@
 
   <div class="field">
     <label for="content"> content:</label>
-    <input type="text" name="content" id="content" value="<%= content %>"" >
+  
+    <input type="text" name="content" id="textarea" value="<%= content %>" >
+   
   </div>
 
   <div class="field">
@@ -17,9 +19,11 @@
   </div>
 
   <div class="actions">
-    <input type="submit" value="Update Note" />
+    <input class="btn btn-success btn-small" type="submit" value="Update Note" />
+
+    <a class="btn " href="#/<%= id %>" class="show">Show </a>
+    
   </div>
 
 </form>
 
-<a href="#/index">Back</a>
