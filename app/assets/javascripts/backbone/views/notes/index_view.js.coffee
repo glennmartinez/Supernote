@@ -4,7 +4,8 @@ class Supernote.Views.Notes.IndexView extends Backbone.View
   template: JST["backbone/templates/notes/index"]
 
   initialize: () ->
-    @options.notes.bind('reset', @addAll)
+    @options.notes.bind('reset','change', @addAll)
+    
 
   addAll: () =>
     @options.notes.each(@addOne)
