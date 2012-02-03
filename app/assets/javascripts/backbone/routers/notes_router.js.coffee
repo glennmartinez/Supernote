@@ -4,6 +4,7 @@ class Supernote.Routers.NotesRouter extends Backbone.Router
     @notes.reset options.notes
 
   routes:
+    ""          : "index"    
     "/new"      : "newNote"
     "/index"    : "index"
     "/:id/edit" : "edit"
