@@ -9,7 +9,8 @@ class Supernote.Routers.NotesRouter extends Backbone.Router
     "/index"    : "index"
     "/:id/edit" : "edit"
     "/:id"      : "show"
-    ".*"        : "index"
+    ".*"        : "super"
+    "/super"    : "super"  
 
   newNote: ->
     @view = new Supernote.Views.Notes.NewView(collection: @notes)
@@ -18,6 +19,10 @@ class Supernote.Routers.NotesRouter extends Backbone.Router
   index: ->
     @view = new Supernote.Views.Notes.IndexView(notes: @notes)
     $("#notes").html(@view.render().el)
+    note = @notes.get(id)
+
+    @view2 = new Supernote.Views.Notes.ShowView(model: note)
+    $("#note").html(@view2.render().el)
 
   show: (id) ->
     note = @notes.get(id)
@@ -30,3 +35,8 @@ class Supernote.Routers.NotesRouter extends Backbone.Router
 
     @view = new Supernote.Views.Notes.EditView(model: note)
     $("#note").html(@view.render().el)
+
+  super: ->
+    @listview = Supernote.Views.notes.IndexView(notes: @notes)
+    $("#notes").append(listview.render().el)  
+  

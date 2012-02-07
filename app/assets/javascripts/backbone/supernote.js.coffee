@@ -9,3 +9,12 @@ window.Supernote =
   Collections: {}
   Routers: {}
   Views: {}
+
+  init: (options) ->
+  	Supernote.options = options
+  	new Supernote.Routers.NotesRouter(options)
+
+  	if !Backbone.history.started
+  	  Backbone.history.start()
+  	  Backbone.history.started = true
+
