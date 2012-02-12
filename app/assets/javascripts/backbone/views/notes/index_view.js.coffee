@@ -7,7 +7,7 @@ class Supernote.Views.Notes.IndexView extends Backbone.View
     @options.notes.bind('reset', @addAll)
     @options.notes.bind('add', @updateNote)
     @options.notes.bind('change', @updateNote)
-    @options.notes.bind('delete', @updateNote)
+    @options.notes.bind('destroy', @updateNote)
     
 
   addAll: () =>
