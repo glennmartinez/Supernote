@@ -1,8 +1,10 @@
 class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
+  before_filter :authenticate_user!
   def index
     @notes = Note.all
+    #@notes = Note.find(:all, :conditions => { :user_id => current_user.id})
 
     respond_to do |format|
       format.html # index.html.erb

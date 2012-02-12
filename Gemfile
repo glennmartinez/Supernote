@@ -10,6 +10,7 @@ gem 'rails-backbone'
 gem 'execjs'
 gem 'therubyracer'
 gem 'heroku'
+gem 'devise'
 
 group :production do
 	gem 'thin'

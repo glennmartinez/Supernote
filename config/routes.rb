@@ -1,4 +1,8 @@
 Supernote::Application.routes.draw do
+  devise_for :users
+
+  devise_for :models
+
   resources :notes
 
   # The priority is based upon order of creation:
