@@ -3,8 +3,18 @@ class NotesController < ApplicationController
   # GET /notes.json
   before_filter :authenticate_user!
   def index
-    @notes = Note.all
-    #@notes = Note.find(:all, :conditions => { :user_id => current_user.id})
+    #@notes = Note.all
+    @notes = Note.find(:all, :conditions => { :user_id => current_user.id})
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @notes }
+    end
+  end
+
+  def backbone
+    #@notes = Note.all
+    @notes = Note.find(:all, :conditions => { :user_id => current_user.id})
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,15 +52,27 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(params[:note])
+
+    note_params = params
+    #note_params.delete('action')
+    #note_params.delete('controller')
+    note_params['user_id'] = current_user.id  
+
+    #@note = Note.new(params[:note])
+    @note = Note.new(note_params[:note])
+    @note.user_id = current_user.id
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render json: @note, status: :created, location: @note }
+        #format.html { redirect_to @note, notice: 'Note was successfully created.' }
+        #format.json { render json: @note, status: :created, location: @note }
+        format.html { redirect_to(@note, :notice => 'Note was successfully created.') }
+        format.json  { render :json => @note, :status => :created, :location => @note }
       else
-        format.html { render action: "new" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        #format.html { render action: "new" }
+        #format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json  { render :json => @note.errors, :status => :unprocessable_entity }
       end
     end
   end
